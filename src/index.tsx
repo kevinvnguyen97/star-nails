@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 
 const config: ThemeConfig = {
-  initialColorMode: "light",
+  initialColorMode: "dark",
   useSystemColorMode: true,
   disableTransitionOnChange: false,
 };
@@ -25,6 +25,19 @@ const theme = extendTheme({
         bg: mode("white", "black")(props),
       },
     }),
+  },
+  components: {
+    Table: {
+      variants: {
+        customStriped: (props: StyleFunctionProps) => ({
+          tr: {
+            _odd: {
+              bg: props.colorMode === "light" ? "gainsboro" : "#222222",
+            },
+          },
+        }),
+      },
+    },
   },
 });
 

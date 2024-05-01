@@ -13,7 +13,13 @@ import {
   useColorMode,
   Switch,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  SunIcon,
+  MoonIcon,
+  StarIcon,
+} from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
 type PageLink = {
@@ -76,12 +82,16 @@ export const NavigationBar = () => {
           variant="ghost"
         />
         <HStack spacing={8} alignItems="center">
-          <Text fontWeight="bold" color="red">
-            <Text color="dodgerblue" display="inline">
-              ★
-            </Text>{" "}
-            NAILS
-          </Text>
+          <Box
+            fontWeight="bold"
+            color="red"
+            display="flex"
+            gap={1}
+            alignItems="center"
+          >
+            <StarIcon color="dodgerblue" />
+            <Text>NAILS</Text>
+          </Box>
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {LINKS.map(({ name, path }) => (
               <NavLink key={name} onClick={() => navigate(path)}>
