@@ -8,55 +8,32 @@ import {
   Text,
   Image,
   Tr,
+  HStack,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { StarIcon } from "@chakra-ui/icons";
+import { Logo } from "../components/Logo";
 
 export const Home = () => {
   return (
-    <motion.div
-      key="Home"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+    <Box
+      backgroundImage="/images/front_cover.jpeg"
+      height="calc(100vh - 56px)"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
     >
-      <Text display="flex" justifyContent="center" fontSize="xxx-large" gap={2}>
-        <Text>Welcome to</Text>
-        <Box
-          fontWeight="bold"
-          color="red"
+      <Box background="rgba(0, 0, 0, 0.5)" height="100%">
+        <Text
           display="flex"
+          justifyContent="center"
+          fontSize="xxx-large"
           gap={2}
-          alignItems="center"
+          color="white"
         >
-          <StarIcon color="dodgerblue" />
-          <Text>NAILS</Text>
-        </Box>
-        <Text display="inline">!</Text>
-      </Text>
-      <Image src="/images/front_cover.jpeg" />
-      <TableContainer width={500}>
-        <Text textAlign="center" fontSize="x-large">
-          Store Hours
+          <Logo />
         </Text>
-        <Table size="sm" variant="customStriped">
-          <Tbody>
-            <Tr>
-              <Td fontWeight="bold">Monday - Thursday</Td>
-              <Td>9:30 AM - 7:00 PM</Td>
-            </Tr>
-            <Tr>
-              <Td fontWeight="bold">Friday - Saturday</Td>
-              <Td>9:00 AM - 7:00 PM</Td>
-            </Tr>
-            <Tr>
-              <Td fontWeight="bold">Sunday</Td>
-              <Td>Closed</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
-    </motion.div>
+      </Box>
+    </Box>
   );
 };

@@ -6,7 +6,6 @@ import {
   Link,
   IconButton,
   useDisclosure,
-  useColorModeValue,
   Text,
   Stack,
   Button,
@@ -21,6 +20,7 @@ import {
   StarIcon,
 } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
+import { Logo } from "./Logo";
 
 type PageLink = {
   name: string;
@@ -29,6 +29,7 @@ type PageLink = {
 const LINKS: PageLink[] = [
   { name: "Home", path: "/" },
   { name: "Gallery", path: "/gallery" },
+  { name: "Services", path: "/services" },
 ];
 
 type NavLinkProps = {
@@ -66,11 +67,10 @@ export const NavigationBar = () => {
   const navigate = useNavigate();
 
   const { colorMode, toggleColorMode } = useColorMode();
-  const boxColor = useColorModeValue("gainsboro", "#222222");
 
   return (
-    <Box bgColor={boxColor} paddingLeft={5} paddingRight={5}>
-      <Flex h={16} alignItems="center" justifyContent="space-between">
+    <Box>
+      <Flex alignItems="center" justifyContent="space-between" padding={2}>
         <IconButton
           size="md"
           icon={isHamburgerMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -82,16 +82,7 @@ export const NavigationBar = () => {
           variant="ghost"
         />
         <HStack spacing={8} alignItems="center">
-          <Box
-            fontWeight="bold"
-            color="red"
-            display="flex"
-            gap={1}
-            alignItems="center"
-          >
-            <StarIcon color="dodgerblue" />
-            <Text>NAILS</Text>
-          </Box>
+          <Logo />
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {LINKS.map(({ name, path }) => (
               <NavLink key={name} onClick={() => navigate(path)}>
