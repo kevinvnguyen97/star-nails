@@ -1,17 +1,4 @@
-import React from "react";
-import {
-  Box,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Image,
-  Tr,
-  HStack,
-} from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { StarIcon } from "@chakra-ui/icons";
+import { Box, Text } from "@chakra-ui/react";
 import { Logo } from "../components/Logo";
 
 export const Home = () => {

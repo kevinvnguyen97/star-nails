@@ -12,13 +12,7 @@ import {
   useColorMode,
   Switch,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  SunIcon,
-  MoonIcon,
-  StarIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 
