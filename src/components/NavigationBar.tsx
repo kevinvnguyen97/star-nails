@@ -1,18 +1,14 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   Box,
   Flex,
   HStack,
   Link,
   IconButton,
-  useDisclosure,
   Text,
   Stack,
-  Button,
-  useColorMode,
-  Switch,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
 
@@ -41,8 +37,7 @@ const NavLink = (props: NavLinkProps) => {
         textDecoration: "none",
       }}
       onClick={onClick}
-      as={Button}
-      variant="ghost"
+      variant="plain"
       bg="none"
       fontWeight="normal"
     >
@@ -52,32 +47,24 @@ const NavLink = (props: NavLinkProps) => {
 };
 
 export const NavigationBar = () => {
-  const {
-    isOpen: isHamburgerMenuOpen,
-    onOpen: onHamburgerMenuOpen,
-    onClose: onHamburgerMenuClose,
-  } = useDisclosure();
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const { colorMode, toggleColorMode } = useColorMode();
-
   return (
-    <Box>
+    <Box position="absolute" width="100%">
       <Flex alignItems="center" justifyContent="space-between" padding={2}>
         <IconButton
-          size="md"
-          icon={isHamburgerMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+          size="sm"
           aria-label="Open Menu"
           display={{ md: "none" }}
-          onClick={
-            isHamburgerMenuOpen ? onHamburgerMenuClose : onHamburgerMenuOpen
-          }
+          onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
           variant="ghost"
-        />
-        <HStack spacing={8} alignItems="center">
-          <Logo />
-          <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
+        >
+          {isHamburgerMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+        </IconButton>
+        <HStack gap={8} alignItems="center">
+          <HStack as="nav" gap={4} display={{ base: "none", md: "flex" }}>
             {LINKS.map(({ name, path }) => (
               <NavLink key={name} onClick={() => navigate(path)}>
                 <Text>{name}</Text>
@@ -85,25 +72,18 @@ export const NavigationBar = () => {
             ))}
           </HStack>
         </HStack>
-        <Flex alignItems="center" gap={2}>
-          <MoonIcon />
-          <Switch
-            isChecked={colorMode === "light" ? true : false}
-            onChange={toggleColorMode}
-          />
-          <SunIcon />
-        </Flex>
+        <Logo />
       </Flex>
 
       {isHamburgerMenuOpen && (
         <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
+          <Stack as={"nav"} gap={4}>
             {LINKS.map(({ name, path }) => (
               <NavLink
                 key={name}
                 onClick={() => {
                   navigate(path);
-                  onHamburgerMenuClose();
+                  setIsHamburgerMenuOpen(false);
                 }}
               >
                 <Text>{name}</Text>

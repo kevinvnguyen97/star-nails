@@ -3,51 +3,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ChakraProvider, ThemeConfig, extendTheme } from "@chakra-ui/react";
-import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "./components/ui/provider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const config: ThemeConfig = {
-  initialColorMode: "dark",
-  useSystemColorMode: true,
-  disableTransitionOnChange: false,
-};
-
-const theme = extendTheme({
-  config,
-  styles: {
-    global: (props: StyleFunctionProps) => ({
-      body: {
-        bg: mode("white", "black")(props),
-      },
-    }),
-  },
-  components: {
-    Table: {
-      variants: {
-        customStriped: (props: StyleFunctionProps) => ({
-          tr: {
-            _odd: {
-              bg: props.colorMode === "light" ? "gainsboro" : "#222222",
-            },
-          },
-        }),
-      },
-    },
-  },
-});
-
 root.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider enableColorScheme enableSystem>
         <App />
-      </BrowserRouter>
-    </ChakraProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
