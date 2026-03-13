@@ -10,14 +10,16 @@ function App() {
   return (
     <Box>
       <NavigationBar />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Route>
-      </Routes>
+      <Box>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/">
+            <Route index element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </Box>
     </Box>
   );
 }

@@ -1,19 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 
 export const Home = () => {
   return (
-    <Box
-      backgroundImage="url('/images/front_cover.jpeg')"
-      height="100vh"
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="cover"
-    >
-      <Box
-        background="rgba(10, 10, 10, 0.5)"
-        height="100%"
-        paddingTop="52px"
-      ></Box>
+    <Box>
+      <Image src="/images/front_cover.jpeg" alt="Front Cover" width="100%" height="auto" />
     </Box>
   );
 };

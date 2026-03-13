@@ -52,7 +52,7 @@ export const NavigationBar = () => {
   const navigate = useNavigate();
 
   return (
-    <Box position="absolute" width="100%">
+    <Box width="100%">
       <Flex alignItems="center" justifyContent="space-between" padding={2}>
         <IconButton
           size="sm"

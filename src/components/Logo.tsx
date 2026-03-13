@@ -5,13 +5,15 @@ export const Logo = () => {
   return (
     <Box
       fontWeight="bold"
-      color="red"
+      color="yellow"
       display="flex"
       gap={2}
       alignItems="center"
     >
-      <StarIcon color="dodgerblue" />
-      <Text>NAILS</Text>
+      <Box bgColor="white" borderRadius="100%" w={25} h={25} textAlign="center">
+        <StarIcon color="dodgerblue" padding={0} />
+      </Box>
+      <Text fontStyle="italic" fontFamily="Arial">Nails & Spa</Text>
     </Box>
   );
 };
